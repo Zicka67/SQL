@@ -44,10 +44,15 @@
 -- 5. Nom, date et lieu des batailles, classées de la plus récente à la plus ancienne (dates affichées 
 -- au format jj/mm/aaaa).
 
--- SELECT nom_bataille, DATE_FORMAT(date_bataille,"%d %m -%Y")AS date_bataille, nom_lieu
+-- SELECT nom_bataille, DATE_FORMAT(date_bataille,"%d %m -%Y")AS date_bataille, nom_lieu       *** Cette ligne spécifie les colonnes à sélectionner 
+-- dans la ou les tables spécifiées à la ligne suivante.  La fonction DATE_FORMAT est utilisée pour formater la colonne date_bataille dans
+--  un format spécifique. ***
 -- FROM bataille
--- INNER JOIN lieu ON bataille.id_lieu=lieu.id_lieu
--- ORDER BY YEAR(date_bataille) DESC 
+-- INNER JOIN lieu ON bataille.id_lieu=lieu.id_lieu    ***  Cette ligne précise comment la ou les tables spécifiées à la ligne précédente 
+-- doivent être jointes avec la table "lieu". La clause "ON" spécifie la condition de jointure  ***
+-- ORDER BY YEAR(date_bataille) DESC    *** Cette ligne précise comment les résultats de la requête doivent être triés.  
+-- La clause "ORDER BY" permet de trier les résultats par "YEAR" de la colonne "date_bataille" dans l'ordre décroissant (DESC)   ***
+
 -- 6. Nom des potions + coût de réalisation de la potion (trié par coût décroissant).
 
 -- SELECT nom_potion, SUM(qte*cout_ingredient) AS cout
