@@ -7,12 +7,22 @@
 
 -- 2. Nombre de personnages par lieu (trié par nombre de personnages décroissant).
 
+-- *** Cette requête compte le nombre de caractères (à l'aide de la fonction COUNT) pour chaque emplacement (à l'aide de la clause GROUP BY id_lieu).  
+-- Il renverra le nombre de caractères et l'id_lieu correspondant.  
+-- Cette requête permet de savoir combien de caractères sont associés à chaque emplacement. *** 
+
 -- SELECT COUNT(id_personnage) ,id_lieu
 -- FROM personnage
 -- GROUP BY id_lieu
 
 -- 3. Nom des personnages + spécialité + adresse et lieu d'habitation, triés par lieu puis par nom 
 -- de personnage
+
+-- *** Cette requête consiste à sélectionner le nom des personnages, leurs spécialités, 
+-- leur adresse et le lieu où ils habitent, à partir de la table "personnage".  
+-- Le résultat sera regroupé par lieu (id_lieu) et nom du personnage (nom_personnage).  
+-- Cette requête donnera tous les personnages, leurs spécialités, leur adresse et leur lieu de résidence regroupés par le lieu où ils habitent 
+-- et classés par le nom du personnage. *** 
 
 -- SELECT nom_personnage, id_specialite, adresse_personnage, id_lieu
 -- FROM personnage
@@ -21,10 +31,15 @@
 -- 4. Nom des spécialités avec nombre de personnages par spécialité (trié par nombre de 
 -- personnages décroissant)
 
--- SELECT nom_specialite, COUNT(id_personnage)
--- FROM specialite
--- INNER JOIN personnage ON specialite.id_specialite=personnage.id_specialite
--- GROUP BY specialite.nom_specialite ORDER BY COUNT(id_personnage) DESC
+-- SELECT nom_specialite, COUNT(id_personnage) *** Cette ligne sélectionne les colonnes "nom_specialite" et le nombre de "id_personnage" de la table "specialite" et "personnage". 
+-- FROM specialite *** Cette ligne précise que les données doivent être sélectionnées dans la table "specialite". 
+-- INNER JOIN personnage ON specialite.id_specialite=personnage.id_specialite *** Cette ligne joint les tables "specialite" et "personnage" 
+-- sur la colonne "id_specialite", ce qui signifie que seules les lignes avec des valeurs "id_specialite" correspondantes dans les deux tables 
+-- seront inclus dans le jeu de résultats. 
+-- GROUP BY specialite.nom_specialite *** Cette ligne regroupe les résultats par la colonne "nom_specialite", 
+-- ce qui signifie que le nombre de "id_personnage" sera calculé pour chaque valeur "nom_specialite" unique. 
+-- ORDER BY COUNT(id_personnage) DESC  ***  Cette ligne ordonne les résultats par le nombre de "id_personnage" dans l'ordre décroissant, 
+-- ce qui signifie que les spécialités avec le plus grand nombre de personnages seront listées en premier. 
 
 -- 5. Nom, date et lieu des batailles, classées de la plus récente à la plus ancienne (dates affichées 
 -- au format jj/mm/aaaa).
