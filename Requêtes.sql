@@ -55,12 +55,12 @@
 
 -- 6. Nom des potions + coût de réalisation de la potion (trié par coût décroissant).
 
--- SELECT nom_potion, SUM(qte*cout_ingredient) AS cout
+-- SELECT nom_potion, SUM(qte*cout_ingredient) AS cout *** Cette ligne sélectionne le nom de la potion (nom_potion) et le coût total des ingrédients utilisés pour fabriquer la potion (SUM(qte  cout_ingredient) AS cout) ***
 -- FROM potion
--- INNER JOIN composer ON potion.id_potion = composer.id_potion
--- INNER JOIN ingredient ON composer.id_ingredient = ingredient.id_ingredient
--- GROUP BY nom_potion
--- ORDER BY SUM(qte*cout_ingredient) DESC
+-- INNER JOIN composer ON potion.id_potion = composer.id_potion   *** Cette ligne rejoint la table "composer" sur la colonne "id_potion", qui relie la table des potions à la table des ingrédients  ***
+-- INNER JOIN ingredient ON composer.id_ingredient = ingredient.id_ingredient ***   Cette ligne rejoint la table "ingredient" sur la colonne "id_ingredient", qui relie la table des ingrédients à la table des compositions ***
+-- GROUP BY nom_potion  
+-- ORDER BY SUM(qte*cout_ingredient) DESC   ***  Cette ligne ordonne les résultats par le coût total des ingrédients utilisés pour fabriquer chaque potion dans l'ordre décroissant    ***
 
 -- 7. Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion 'Santé'.
 
