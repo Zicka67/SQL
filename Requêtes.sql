@@ -128,8 +128,11 @@
 
 -- 15. Nom du / des personnages qui n'ont pas le droit de boire de la potion 'Magique'.
 
-
-
+-- SELECT nom_personnage
+-- FROM personnage 
+-- LEFT JOIN boire  ON boire.id_personnage = personnage.id_personnage
+-- WHERE boire.id_potion = 1
+-- AND (dose_boire = 0 OR ISNULL(boire.id_personnage))
  
 
 
