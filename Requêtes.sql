@@ -83,12 +83,49 @@
 
 -- 9. Nom des personnages et leur quantité de potion bue (en les classant du plus grand buveur 
 -- au plus petit).
+
+-- SELECT nom_personnage, SUM(dose_boire) AS 'qte total bue'
+-- FROM personnage
+-- INNER JOIN boire ON personnage.id_personnage = boire.id_personnage
+-- GROUP BY personnage.nom_personnage
+-- ORDER BY SUM(dose_boire) DESC 
+
 -- 10. Nom de la bataille où le nombre de casques pris a été le plus important.
+
+-- SELECT nom_bataille, SUM(qte) AS 'qte total casque'
+-- FROM bataille
+-- INNER JOIN prendre_casque ON bataille.id_bataille=prendre_casque.id_bataille
+-- GROUP BY bataille.nom_bataille
+-- ORDER BY SUM(qte) DESC
+-- LIMIT 1
+
 -- 11. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par 
 -- nombre décroissant)
+
+-- SELECT nom_type_casque, SUM(casque.cout_casque) AS cout
+-- FROM type_casque
+-- INNER JOIN casque ON type_casque.id_type_casque=casque.id_type_casque
+-- GROUP BY type_casque.id_type_casque
+-- ORDER BY cout DESC
+
 -- 12. Nom des potions dont un des ingrédients est le poisson frais.
+
+-- SELECT nom_potion
+-- FROM potion
+-- INNER JOIN composer ON potion.id_potion=potion.id_potion
+-- INNER JOIN ingredient ON composer.id_ingredient= composer.id_ingredient
+-- WHERE LOWER(nom_ingredient) LIKE 'poisson frais'
+-- GROUP BY potion.nom_potion
+
 -- 13. Nom du / des lieu(x) possédant le plus d'habitants, en dehors du village gaulois.
+
 -- 14. Nom des personnages qui n'ont jamais bu aucune potion.
+
+-- SELECT nom_personnage
+-- FROM personnage
+-- LEFT JOIN boire ON boire.id_personnage = personnage.id_personnage
+-- WHERE ISNULL(boire.id_personnage)
+
 -- 15. Nom du / des personnages qui n'ont pas le droit de boire de la potion 'Magique'.
 
 
