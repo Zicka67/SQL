@@ -137,9 +137,12 @@
 
 -- SELECT nom_personnage
 -- FROM personnage 
--- LEFT JOIN boire  ON boire.id_personnage = personnage.id_personnage
--- WHERE boire.id_potion = 1
--- AND (dose_boire = 0 OR ISNULL(boire.id_personnage))
+-- LEFT JOIN autoriser_boire  ON Autoriser_boire.id_personnage = personnage.id_personnage
+-- WHERE personnage.id_personnage NOT IN 
+-- 	(SELECT id_personnage 
+-- 	FROM autoriser_boire 
+-- 	WHERE id_potion='1')
+-- GROUP BY nom_personnage
  
 
 
