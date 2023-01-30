@@ -84,7 +84,7 @@
 -- 9. Nom des personnages et leur quantité de potion bue (en les classant du plus grand buveur 
 -- au plus petit).
 
--- SELECT nom_personnage, SUM(dose_boire) AS 'qte total bue'
+-- SELECT nom_personnage, SUM(dose_boire) AS 'qte total bue' // Créer un alias pour le nom de la colonne 
 -- FROM personnage
 -- INNER JOIN boire ON personnage.id_personnage = boire.id_personnage
 -- GROUP BY personnage.nom_personnage
@@ -118,6 +118,13 @@
 -- GROUP BY potion.nom_potion
 
 -- 13. Nom du / des lieu(x) possédant le plus d'habitants, en dehors du village gaulois.
+
+-- SELECT nom_lieu AS 'nomlieu',COUNT(id_personnage) AS population
+-- FROM lieu
+-- INNER JOIN personnage ON personnage.id_lieu = lieu.id_lieu
+-- WHERE nom_lieu != 'Village gaulois'
+-- GROUP BY nomlieu 
+-- ORDER BY population DESC
 
 -- 14. Nom des personnages qui n'ont jamais bu aucune potion.
 
